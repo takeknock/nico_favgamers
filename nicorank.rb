@@ -5,6 +5,11 @@ require 'open-uri'
 require 'cgi'
 require 'pstore'
 
+class Setting
+	#24時間おき
+	INTERVAL = 1440
+
+end
 #該当する動画IDを保存
 @array = Array.new()
 $idarr = Array.new()
@@ -78,7 +83,7 @@ def setids
 	end
 	ntime = Time.now
 	margin = (ntime-time).divmod(60)
-	if margin[0]>=60 then
+	if margin[0]>=Setting::INTERVAL then
 		idarr = getvideoids()
 
 		db.transaction do
@@ -115,7 +120,7 @@ def showvideoinfo
 		print "</head>\n"
 		print "<body>\n"
 		print "<div id=\"header\">"
-		print "<p>ゲーム実況者のレトルト、ふぅ、つわはす、キヨの24時間ランキングtop100入りしている動画をログインなしで視聴できます（１時間おき更新）</p>"
+		print "<p>ゲーム実況者のレトルト、ふぅ、つわはす、キヨの24時間ランキングtop100入りしている動画をログインなしで視聴できます（24時間おき更新）</p>"
 		print "</div>"
 		print "<div id=\"main\">\n"
 
