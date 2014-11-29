@@ -5,6 +5,9 @@ require 'open-uri'
 require 'cgi'
 require 'pstore'
 
+class Setting
+	INTERVAL=1440
+end
 #ランキングから動画のID取得(スクレイピング)
 #より柔軟に動画を取ってくるために、クローラ作る必要ある。
 
@@ -43,8 +46,8 @@ def getvideoids
 						#puts 'http://ext.nicovideo.jp/api/getthumbinfo/'+idt
 						doct = REXML::Document.new(xmlt)
 						uidt = doct.elements['nicovideo_thumb_response/thumb/user_id'].text
-						#レトルト、ふぅ、つわはす、キヨ
-						if uidt == "14930070" || uidt == "36072280" || uidt == "13697131" || uidt == "14047911" then 
+						#P-P、レトルト、ふぅ、つわはす、キヨ
+						if uidt == "12212793" || uidt == "14930070" || uidt == "36072280" || uidt == "13697131" || uidt == "14047911" then 
 							idarr.push(idt)
 						end
 					end
@@ -74,7 +77,7 @@ def setids
 	end
 	ntime = Time.now
 	margin = (ntime-time).divmod(60)
-	if margin[0]>=60 then
+	if margin[0]>=Setting::INTERVAL then
 		idarr = getvideoids()
 
 		db.transaction do
