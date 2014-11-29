@@ -1,0 +1,24 @@
+@import "compass";
+
+@mixin zurui-line-top($black:.1, $white:.5){
+	border-top: 1px solid rgba(0,0,0,$black);
+	@include box-shadow(rgba(255,255,255,$white) 0 1px 0 inset);
+}
+@mixin zurui-line-left($black:.1, $white:.5){
+	border-top: 1px solid rgba(0,0,0,$black);
+	@include box-shadow(rgba(255,255,255,$white) -1px 0 0);
+}
+@mixin zurui-line-right($black:.1, $white:.5){
+	border-top: 1px solid rgba(0,0,0,$black);
+	@include box-shadow(rgba(255,255,255,$white) -1px 0 0 inset);
+}
+@mixin zurui-line-bottom($black:.1, $white:.5){
+	border-top: 1px solid rgba(0,0,0,$black);
+	@include box-shadow(rgba(255,255,255,$white) 0 1px 0);
+}
+
+.h2{
+	@include zurui-line-bottom;
+	background: #fc0;
+}
+

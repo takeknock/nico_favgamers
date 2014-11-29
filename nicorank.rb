@@ -111,8 +111,13 @@ def showvideoinfo
 		print "<html>"
 		print "<head>\n"
 		print "<title>レトルト、ふぅ、つわはす、キヨ実況ランクイン動画一覧</title>\n"
+		print "<link href=\"./stylesheets/screen.css\" media=\"screen, projection\" rel=\"stylesheet\" type=\"text/css\" />\n"
 		print "</head>\n"
 		print "<body>\n"
+		print "<div id=\"header\">"
+		print "<p>ゲーム実況者のレトルト、ふぅ、つわはす、キヨの24時間ランキングtop100入りしている動画をログインなしで視聴できます（１時間おき更新）</p>"
+		print "</div>"
+		print "<div id=\"main\">\n"
 
 		idarr.each do |id|
 			xml = open("http://ext.nicovideo.jp/api/getthumbinfo/"+id)
@@ -120,10 +125,15 @@ def showvideoinfo
 			doc = REXML::Document.new(xml)	
 			title = doc.elements['nicovideo_thumb_response/thumb/title'].text
 			description = doc.elements['nicovideo_thumb_response/thumb/description'].text
-			print "<h1>"+title+"</h1>\n"
+			print "<div id = \"content\">\n"
+			print "<h2>"+title+"</h2>\n"
 			print "<p>"+description+"</p>"
+			print "<div id = \"movie\">\n"
 			print "<script type=\"text/javascript\" src=\"http://ext.nicovideo.jp/thumb_watch/"+id+"\"></script><noscript><a href=\"http://www.nicovideo.jp/watch/"+id+"\">"+title+"</a></noscript>\n"
+			print "</div>\n"
+			print "</div>\n"
 		end
+		print "</div>\n"
 		print "</body>\n"
 		print "</html>\n"
 	end

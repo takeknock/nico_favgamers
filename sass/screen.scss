@@ -1,0 +1,51 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass";
+@import "compass/css3";
+@import "compass/reset";
+@import "zurui.scss";
+
+body{
+	background-image: "./cardboard_flat.png"
+}
+#header{
+	
+}
+
+#main{
+	margin: 10px;
+	background: #F6F6F6;
+}
+div#content{
+	margin-bottom: 5px;
+	padding:10px;
+	@include zurui-line-top;
+	@include zurui-line-bottom;
+	@include zurui-line-right;
+	@include zurui-line-left;
+	
+	@include border-radius(6px);
+	@include gradient-top-lighten(#bdc3c7,5%);
+}
+
+h2{
+	font-size:20px;
+	font-weight: 1000;
+	padding: 10px;
+	@include ts-fff;
+	@include zurui-line-top;
+	@include zurui-line-bottom;
+}
+p{
+	padding: 10px;
+	@include zurui-line-top;
+	@include zurui-line-bottom;
+}
+div#movie{
+	padding: 10px;
+}
+
+
