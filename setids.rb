@@ -46,8 +46,8 @@ def getvideoids
 						#puts 'http://ext.nicovideo.jp/api/getthumbinfo/'+idt
 						doct = REXML::Document.new(xmlt)
 						uidt = doct.elements['nicovideo_thumb_response/thumb/user_id'].text
-						#P-P、レトルト、ふぅ、つわはす、キヨ
-						if uidt == "12212793" || uidt == "14930070" || uidt == "36072280" || uidt == "13697131" || uidt == "14047911" then 
+						#アブ、ただてる、P-P、レトルト、ふぅ、つわはす、キヨ
+						if uidt == "14613584" || uidt == "19427076"|| uidt == "12212793" || uidt == "14930070" || uidt == "36072280" || uidt == "13697131" || uidt == "14047911" then 
 							idarr.push(idt)
 						end
 					end
@@ -90,3 +90,4 @@ def setids
 	end
 end
 
+setids()
