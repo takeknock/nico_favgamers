@@ -12,12 +12,16 @@ def showvideoinfo
 	db = PStore.new("nicorank/pstore.db")
 	db.transaction do
 		idarr = db["id"]
+		@time = db["time"]
 	end
+	#time = @time.year+"年"+@time.month+"月"+@time.day+"日"+@time.hour+"時"+@time.min+"分"+@time.sec+"秒"
+	header = "ゲーム実況者のただてる、アブ、P-P、レトルト、ふぅ、つわはす、キヨの24時間ランキングtop100入りしている動画をログインなしで視聴できます（24時間おき更新: 前回の更新 "
+	#time = @time.hour+"時"+@time.min+"分"+@time.sec+"秒"
 	if idarr=="" then
 		#db.transaction do
 		#	db["id"]= $idarr
 		#end
-		print "レトルト、ふぅ、つわはす、キヨの動画はゲームランキング100に入っていませんでした。\n"
+		print "ただてる、アブ、レトルト、ふぅ、つわはす、キヨの動画はゲームランキング100に入っていませんでした。\n"
 	else
 		#p idarr
 		print "Content-type: text/html\n\n"
@@ -25,10 +29,14 @@ def showvideoinfo
 		print "<head>\n"
 		print "<title>24時間ランキング</title>\n"
 		print "<link href=\"./stylesheets/screen.css\" media=\"screen, projection\" rel=\"stylesheet\" type=\"text/css\" />\n"
+
 		print "</head>\n"
 		print "<body>\n"
 		print "<div id=\"header\">"
-		print "<p>ゲーム実況者のP-P、レトルト、ふぅ、つわはす、キヨの24時間ランキングtop100入りしている動画をログインなしで視聴できます（24時間おき更新）</p>"
+		print "<p>"
+		print header
+		print @time
+		print ")</p>"
 		print "</div>"
 		print "<div id=\"main\">\n"
 
